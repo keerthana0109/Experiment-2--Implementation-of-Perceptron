@@ -44,8 +44,9 @@ Print the accuracy
 
  ## PROGRAM:
  
- ''''
- import numpy as np
+ ```
+ 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits import mplot3d
@@ -139,34 +140,33 @@ plt.xlabel('Epoch')
 plt.ylabel('Errors')
 plt.show()
 
-'''
 from matplotlib.colors import ListedColormap
 
 def plot_decision_regions(x, y):
     resolution = 0.001
     
-    # define a set of markers
+# define a set of markers
     markers = ('o', 'x')
-    # define available colors
+# define available colors
     cmap = ListedColormap(('red', 'blue'))
     
-    # select a range of x containing the scaled test set
+# select a range of x containing the scaled test set
     x1_min, x1_max = x[:, 0].min() - 0.5, x[:, 0].max() + 0.5
     x2_min, x2_max = x[:, 1].min() - 0.5, x[:, 1].max() + 0.5
     
-    # create a grid of values to test the classifier on
+# create a grid of values to test the classifier on
     xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),
                            np.arange(x2_min, x2_max, resolution))
     
     Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
     Z = Z.reshape(xx1.shape)
     
-    # plot the decision region...
+# plot the decision region...
     plt.contourf(xx1, xx2, Z, alpha=0.4, cmap=cmap)
     plt.xlim(xx1.min(), xx1.max())
     plt.ylim(xx2.min(), xx2.max())
     
-    # ...and the points from the test set
+# ...and the points from the test set
     for idx, c1 in enumerate(np.unique(y)):
         plt.scatter(x=x[y == c1, 0],
                     y=x[y == c1, 1], 
@@ -177,7 +177,7 @@ def plot_decision_regions(x, y):
     plt.show()
 
 plot_decision_regions(x_test, y_test)
-'''
+```
 ## OUTPUT:
 ![image](https://user-images.githubusercontent.com/114254543/193421528-463c6e85-d089-4cc2-9c25-13f4e604c905.png)
 
